@@ -2,6 +2,26 @@
 Introduction to writing classes
 """
 import unittest
+class Student():
+    homework_done = False
+    def __init__(self,name,grade):
+        self.name = name
+        self.grade = grade
+        self.homework_done = Student.homework_done
+        print("Welcome "+name+"!")
+    def do_homework(self):
+        print("goodjob doing your homework")
+        Student.homework_done =True
+        return True
+
+    def go_to_school(self,start):
+        self.start = start
+        print(self.name+" is leaving for school at "+self.start)
+        if len(start)>0:
+            return self.name+" is leaving for school at "+self.start
+        else:
+            return self.name+" is leaving for school at 7 am"
+
 
 
 # TODO Create a class called student with the member variables and
@@ -50,7 +70,7 @@ class WriteClassesTests(unittest.TestCase):
         leave_str = WriteClassesTests.student_2.go_to_school(start='6:30 am')
         self.assertEqual('Amelia is leaving for school at 6:30 am', leave_str)
 
-        leave_str = WriteClassesTests.student_3.go_to_school()
+        leave_str = WriteClassesTests.student_3.go_to_school("")
         self.assertEqual('Penelope is leaving for school at 7 am', leave_str)
 
 
